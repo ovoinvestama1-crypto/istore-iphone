@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iStore Official - Toko Online iPhone Authorized & Original</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        apple: {
+                            bg: '#f5f5f7',
+                            card: '#ffffff',
+                            dark: '#1d1d1f',
+                            blue: '#0071e3',
+                            hoverBlue: '#0077ed',
+                            grayText: '#86868b',
+                            accentRed: '#ff3b30'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f5f5f7;
+            color: #1d1d1f;
+        }
+        .backdrop-blur-nav {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .product-card {
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #ccc;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #aaa;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between antialiased">
+
+    <!-- HEADER NAVBAR -->
+    <header class="sticky top-0 z-40 w-full bg-white/80 backdrop-blur-nav border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <!-- Secret Trigger: Click 5 times to open PIN dialog -->
+            <div id="brandLogoTrigger" onclick="handleBrandClick()" class="flex items-center gap-2 text-xl font-bold text-gray-900 tracking-tight cursor-pointer select-none">
+                <i class="fa-brands fa-apple text-2xl"></i>
+                <span>iStore <span class="text-apple-blue font-semibold">Official</span></span>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="hidden md:flex items-center relative w-72">
+                <input type="text" id="searchInput" oninput="handleSearch()" placeholder="Cari tipe iPhone..." 
+                    class="w-full pl-9 pr-4 py-1.5 text-sm bg-gray-100 rounded-full border border-transparent focus:border-apple-blue focus:bg-white focus:outline-none transition">
+                <i class="fa-solid fa-magnifying-glass absolute left-3 text-gray-400 text-xs"></i>
+            </div>
+
+            <!-- Header Quick Actions -->
+            <div class="flex items-center gap-2 sm:gap-3">
+                <button onclick="handleAdminTriggerPrompt()" class="text-xs font-semibold bg-gray-100 hover:bg-gray-200 text-gray-700 px-3 py-2 rounded-full transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-lock text-xs"></i>
+                    <span class="hidden sm:inline">Admin</span>
+                </button>
+                <a href="https://wa.me/6285766414558" target="_blank" class="flex items-center gap-2 text-xs font-medium bg-emerald-500 hover:bg-emerald-600 text-white px-3 py-2 rounded-full transition shadow-sm">
+                    <i class="fa-brands fa-whatsapp text-sm"></i>
+                    <span class="hidden sm:inline">CS WA: 085766414558</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Mobile Search Bar -->
+        <div class="px-4 pb-3 md:hidden">
+            <div class="relative w-full">
+                <input type="text" id="searchInputMobile" oninput="handleSearchMobile()" placeholder="Cari tipe iPhone..." 
+                    class="w-full pl-9 pr-4 py-2 text-sm bg-gray-100 rounded-full border border-transparent focus:border-apple-blue focus:bg-white focus:outline-none transition">
+                <i class="fa-solid fa-magnifying-glass absolute left-3 top-3 text-gray-400 text-xs"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTAINER -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-grow w-full">
+
+        <!-- Hero Promo Banner -->
+        <div class="relative bg-gradient-to-r from-gray-900 via-black to-gray-800 text-white rounded-3xl p-6 sm:p-10 mb-8 overflow-hidden shadow-xl">
+            <div class="absolute right-0 top-0 bottom-0 w-1/2 opacity-20 pointer-events-none hidden md:block">
+                <i class="fa-brands fa-apple text-[220px] absolute -right-10 -bottom-10 text-white"></i>
+            </div>
+            <div class="relative z-10 max-w-xl">
+                <span class="inline-block text-xs font-semibold uppercase tracking-wider bg-apple-blue/20 text-blue-300 border border-blue-400/30 px-3 py-1 rounded-full mb-3">
+                    <i class="fa-solid fa-bolt mr-1 text-yellow-400"></i> Promo Flash Sale 2026
+                </span>
+                <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight text-white mb-2">
+                    Katalog iPhone Original & Garansi Resmi
+                </h1>
+                <p class="text-gray-300 text-sm sm:text-base mb-5 leading-relaxed">
+                    Dapatkan penawaran unit Apple iPhone terlengkap dengan potongan diskon khusus 5% hingga 20%. Harga realpick update terbaru 2026!
+                </p>
+                <div class="flex flex-wrap items-center gap-4 text-xs sm:text-sm text-gray-300">
+                    <div class="flex items-center gap-1.5">
+                        <i class="fa-solid fa-circle-check text-emerald-400"></i> 100% Original Apple
+                    </div>
+                    <div class="flex items-center gap-1.5">
+                        <i class="fa-solid fa-shield-halved text-emerald-400"></i> Garansi Resmi
+                    </div>
+                    <div class="flex items-center gap-1.5">
+                        <i class="fa-solid fa-truck-fast text-emerald-400"></i> Pengiriman Aman
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CATEGORY FILTERS -->
+        <div class="mb-8 overflow-x-auto pb-2 scrollbar-none">
+            <div class="flex items-center gap-2 sm:gap-3 min-w-max" id="categoryTabs">
+                <button onclick="filterCategory('All')" class="category-btn active bg-apple-dark text-white px-5 py-2.5 rounded-full text-xs sm:text-sm font-medium transition shadow-sm">
+                    Semua Tipe
+                </button>
+                <button onclick="filterCategory('iPhone 16')" class="category-btn bg-white hover:bg-gray-200 text-gray-700 px-5 py-2.5 rounded-full text-xs sm:text-sm font-medium transition border border-gray-200">
+                    iPhone 16 Series
+                </button>
+                <button onclick="filterCategory('iPhone 15')" class="category-btn bg-white hover:bg-gray-200 text-gray-700 px-5 py-2.5 rounded-full text-xs sm:text-sm font-medium transition border border-gray-200">
+                    iPhone 15 Series
+                </button>
+                <button onclick="filterCategory('iPhone 14 & 13')" class="category-btn bg-white hover:bg-gray-200 text-gray-700 px-5 py-2.5 rounded-full text-xs sm:text-sm font-medium transition border border-gray-200">
+                    iPhone 14 & 13 Series
+                </button>
+            </div>
+        </div>
+
+        <!-- PRODUCT GRID -->
+        <div id="productGrid" class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+            <!-- Dynamic JavaScript Product Cards -->
+        </div>
+
+        <!-- Empty State Message -->
+        <div id="emptyState" class="hidden text-center py-16 bg-white rounded-3xl border border-gray-200 my-6">
+            <i class="fa-solid fa-mobile-screen-button text-5xl text-gray-300 mb-3"></i>
+            <h3 class="text-lg font-bold text-gray-800">Tipe iPhone Tidak Ditemukan</h3>
+            <p class="text-sm text-gray-500 mt-1">Coba kata kunci lain atau pilih kategori yang tersedia.</p>
+        </div>
+    </main>
+
+    <!-- CHECKOUT MODAL -->
+    <div id="orderModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300">
+        <div class="bg-white rounded-3xl max-w-lg w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-gray-100 p-6 sm:p-8 relative transform scale-95 transition-transform duration-300" id="modalContainer">
+            
+            <button onclick="closeModal()" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-600 flex items-center justify-center transition">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="mb-4 pb-3 border-b border-gray-100">
+                <span class="text-xs font-semibold text-apple-blue uppercase tracking-wider">Detail Pemesanan</span>
+                <h3 class="text-xl font-bold text-gray-900 mt-0.5">Konfirmasi & Pembayaran</h3>
+            </div>
+
+            <!-- Product Summary Card -->
+            <div class="bg-gray-50 rounded-2xl p-4 flex gap-4 items-center mb-5 border border-gray-200/70">
+                <div class="w-20 h-20 bg-white rounded-xl flex items-center justify-center p-2 border border-gray-100 flex-shrink-0">
+                    <img id="modalImg" src="" alt="iPhone" class="max-h-full object-contain">
+                </div>
+                <div>
+                    <span id="modalCategory" class="text-[10px] font-bold uppercase bg-gray-200 text-gray-700 px-2 py-0.5 rounded"></span>
+                    <h4 id="modalTitle" class="font-bold text-gray-900 text-base leading-tight mt-1"></h4>
+                    <div class="flex items-center gap-2 mt-1">
+                        <span id="modalDiscountBadge" class="text-xs font-bold text-white bg-red-500 px-1.5 py-0.5 rounded"></span>
+                        <span id="modalOrigPrice" class="text-xs text-gray-400 line-through"></span>
+                    </div>
+                    <div id="modalFinalPrice" class="text-base font-extrabold text-gray-900 mt-0.5"></div>
+                </div>
+            </div>
+
+            <!-- Bank Transfer Payment Information Box -->
+            <div class="bg-blue-50/70 border border-blue-200/80 rounded-2xl p-4 mb-5">
+                <div class="flex items-center justify-between mb-2">
+                    <div class="flex items-center gap-2 text-sm font-bold text-blue-900">
+                        <i class="fa-solid fa-building-columns text-apple-blue"></i>
+                        <span>Rekening Pembayaran Owner</span>
+                    </div>
+                    <span class="text-[10px] font-semibold bg-blue-100 text-blue-800 px-2 py-0.5 rounded-full">Resmi Owner</span>
+                </div>
+                <p class="text-xs text-gray-600 mb-3">Silakan transfer sesuai total harga ke nomor rekening berikut:</p>
+                
+                <div id="modalBankList" class="space-y-2">
+                    <!-- Bank list dynamically generated -->
+                </div>
+            </div>
+
+            <!-- Customer Details Form -->
+            <form id="checkoutForm" onsubmit="submitOrder(event)" class="space-y-3">
+                <div>
+                    <label class="block text-xs font-semibold text-gray-700 mb-1">Nama Lengkap Pembeli *</label>
+                    <input type="text" id="buyerName" required placeholder="Contoh: Budi Santoso" 
+                        class="w-full px-3.5 py-2 text-sm bg-gray-50 border border-gray-300 rounded-xl focus:ring-2 focus:ring-apple-blue focus:bg-white focus:outline-none">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-gray-700 mb-1">Pilihan Warna Unit *</label>
+                    <select id="buyerColor" required class="w-full px-3.5 py-2 text-sm bg-gray-50 border border-gray-300 rounded-xl focus:ring-2 focus:ring-apple-blue focus:bg-white focus:outline-none">
+                        <option value="">-- Pilih Warna --</option>
+                        <option value="Space Black / Natural Titanium">Space Black / Natural Titanium</option>
+                        <option value="Silver / White Titanium">Silver / White Titanium</option>
+                        <option value="Blue / Desert Titanium">Blue / Desert Titanium</option>
+                        <option value="Pink / Ultramarine">Pink / Ultramarine</option>
+                        <option value="Starlight / Midnight">Starlight / Midnight</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-gray-700 mb-1">Alamat Pengiriman Lengkap *</label>
+                    <textarea id="buyerAddress" rows="2" required placeholder="Jl. Merdeka No. 12, Kel. Menteng, Kec. Menteng, Jakarta Pusat, 10310" 
+                        class="w-full px-3.5 py-2 text-sm bg-gray-50 border border-gray-300 rounded-xl focus:ring-2 focus:ring-apple-blue focus:bg-white focus:outline-none"></textarea>
+                </div>
+
+                <div class="pt-2">
+                    <button type="submit" class="w-full py-3 px-4 bg-emerald-500 hover:bg-emerald-600 text-white font-bold rounded-2xl shadow-lg hover:shadow-xl transition flex items-center justify-center gap-2 text-sm">
+                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                        <span>Pesan Sekarang via WhatsApp</span>
+                    </button>
+                    <p class="text-[11px] text-center text-gray-500 mt-2">
+                        Format pesanan & tagihan akan langsung terhubung ke WhatsApp Admin (085766414558).
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- SECRET ADMIN PIN MODAL -->
+    <div id="pinModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-md hidden">
+        <div class="bg-white rounded-3xl max-w-sm w-full p-6 text-center relative shadow-2xl border border-gray-100">
+            <button onclick="closePinModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+            <div class="w-12 h-12 bg-apple-blue/10 text-apple-blue rounded-full flex items-center justify-center mx-auto mb-3">
+                <i class="fa-solid fa-user-shield text-xl"></i>
+            </div>
+            <h3 class="text-lg font-bold text-gray-900">Panel Admin Rahasia</h3>
+            <p class="text-xs text-gray-500 mt-1 mb-4">Masukkan PIN Akses Admin untuk Kelola Toko</p>
+            
+            <form onsubmit="verifyPin(event)" class="space-y-3">
+                <input type="password" id="adminPinInput" placeholder="Masukkan PIN..." required
+                    class="w-full px-4 py-2.5 text-center text-lg font-bold tracking-widest bg-gray-50 border border-gray-300 rounded-xl focus:ring-2 focus:ring-apple-blue focus:bg-white focus:outline-none">
+                <button type="submit" class="w-full py-2.5 bg-apple-dark hover:bg-black text-white text-sm font-semibold rounded-xl transition">
+                    Masuk Admin
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ADMIN PANEL DASHBOARD MODAL -->
+    <div id="adminPanelModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm hidden">
+        <div class="bg-white rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-gray-100 p-6 sm:p-8 relative">
+            
+            <div class="flex items-center justify-between pb-4 mb-6 border-b border-gray-200">
+                <div>
+                    <span class="text-xs font-bold text-emerald-600 uppercase tracking-wider"><i class="fa-solid fa-shield-halved mr-1"></i> Mode Admin Aktif</span>
+                    <h3 class="text-xl font-extrabold text-gray-900">Pengelolaan Toko iStore</h3>
+                </div>
+                <button onclick="closeAdminPanel()" class="px-3 py-1.5 bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs font-semibold rounded-xl transition">
+                    Keluar Admin
+                </button>
+            </div>
+
+            <!-- ADMIN TABS -->
+            <div class="flex border-b border-gray-200 mb-6 gap-4 text-sm font-bold">
+                <button onclick="switchAdminTab('products')" id="tabBtnProducts" class="pb-2 border-b-2 border-apple-blue text-apple-blue">
+                    <i class="fa-solid fa-mobile-screen mr-1"></i> Kelola Produk & Harga
+                </button>
+                <button onclick="switchAdminTab('accounts')" id="tabBtnAccounts" class="pb-2 text-gray-400 hover:text-gray-700">
+                    <i class="fa-solid fa-credit-card mr-1"></i> Kelola Rekening Owner
+                </button>
+            </div>
+
+            <!-- TAB 1: KELOLA PRODUK -->
+            <div id="adminTabProducts" class="space-y-6">
+                <!-- Add Product Form -->
+                <div class="bg-gray-50 border border-gray-200 rounded-2xl p-4 sm:p-5">
+                    <h4 class="text-sm font-bold text-gray-800 mb-3" id="productFormTitle"><i class="fa-solid fa-plus-circle text-apple-blue mr-1"></i> Tambah Produk iPhone Baru</h4>
+                    <form onsubmit="saveProduct(event)" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                        <input type="hidden" id="editProductId" value="">
+                        <div>
+                            <label class="block text-[11px] font-semibold text-gray-600 mb-1">Nama Tipe iPhone</label>
+                            <input type="text" id="pName" required placeholder="iPhone 16 Pro Max 256GB" class="w-full px-3 py-1.5 text-xs bg-white border border-gray-300 rounded-lg">
+                        </div>
+                        <div>
+                            <label class="block text-[11px] font-semibold text-gray-600 mb-1">Kategori Tipe</label>
+                            <select id="pCategory" required class="w-full px-3 py-1.5 text-xs bg-white border border-gray-300 rounded-lg">
+                                <option value="iPhone 16">iPhone 16 Series</option>
+                                <option value="iPhone 15">iPhone 15 Series</option>
+                                <option value="iPhone 14 & 13">iPhone 14 & 13 Series</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-[11px] font-semibold text-gray-600 mb-1">Harga Normal (Rp)</label>
+                            <input type="number" id="pPrice" required placeholder="24999000" class="w-full px-3 py-1.5 text-xs bg-white border border-gray-300 rounded-lg">
+                        </div>
+                        <div>
+                            <label class="block text-[11px] font-semibold text-gray-600 mb-1">Diskon (%) [5 - 20]</label>
+                            <input type="number" id="pDiscount" min="0" max="100" required placeholder="10" class="w-full px-3 py-1.5 text-xs bg-white border border-gray-300 rounded-lg">
+                        </div>
+                        <div class="sm:col-span-2">
+                            <label class="block text-[11px] font-semibold text-gray-600 mb-1">URL Gambar Produk</label>
+                            <input type="url" id="pImg" required placeholder="https://store.storeimages.cdn-apple.com/..." class="w-full px-3 py-1.5 text-xs bg-white border border-gray-300 rounded-lg">
+                        </div>
+                        <div class="sm:col-span-2 lg:col-span-3 flex justify-end gap-2 pt-2">
+                            <button type="button" onclick="resetProductForm()" class="px-4 py-2 bg-gray-200 hover:bg-gray-300 text-gray-700 text-xs font-bold rounded-lg transition">Batal</button>
+                            <button type="submit" class="px-4 py-2 bg-apple-blue hover:bg-blue-600 text-white text-xs font-bold rounded-lg transition">Simpan Produk</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Product Table List -->
+                <div class="overflow-x-auto border border-gray-200 rounded-2xl">
+                    <table class="w-full text-left text-xs text-gray-600">
+                        <thead class="bg-gray-100 text-gray-800 uppercase font-bold border-b border-gray-200">
+                            <tr>
+                                <th class="p-3">Produk</th>
+                                <th class="p-3">Kategori</th>
+                                <th class="p-3">Harga Normal</th>
+                                <th class="p-3">Diskon</th>
+                                <th class="p-3">Harga Akhir</th>
+                                <th class="p-3 text-center">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="adminProductTable" class="divide-y divide-gray-200 bg-white">
+                            <!-- Dynamic admin products list -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- TAB 2: KELOLA REKENING -->
+            <div id="adminTabAccounts" class="hidden space-y-6">
+                <!-- Add Account Form -->
+                <div class="bg-gray-50 border border-gray-200 rounded-2xl p-4 sm:p-5">
+                    <h4 class="text-sm font-bold text-gray-800 mb-3" id="accFormTitle"><i class="fa-solid fa-plus-circle text-apple-blue mr-1"></i> Tambah Nomor Rekening Owner Baru</h4>
+                    <form onsubmit="saveAccount(event)" class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                        <input type="hidden" id="editAccId" value="">
+                        <div>
+                            <label class="block text-[11px] font-semibold text-gray-600 mb-1">Nama Bank / E-Wallet</label>
+                            <input type="text" id="accBank" required placeholder="Contoh: BANK BCA / MANDIRI" class="w-full px-3 py-1.5 text-xs bg-white border border-gray-300 rounded-lg">
+                        </div>
+                        <div>
+                            <label class="block text-[11px] font-semibold text-gray-600 mb-1">Nomor Rekening</label>
+                            <input type="text" id="accNum" required placeholder="1234-5678-90" class="w-full px-3 py-1.5 text-xs bg-white border border-gray-300 rounded-lg">
+                        </div>
+                        <div>
+                            <label class="block text-[11px] font-semibold text-gray-600 mb-1">Atas Nama (a.n)</label>
+                            <input type="text" id="accHolder" required placeholder="Owner iStore" class="w-full px-3 py-1.5 text-xs bg-white border border-gray-300 rounded-lg">
+                        </div>
+                        <div class="sm:col-span-3 flex justify-end gap-2 pt-2">
+                            <button type="button" onclick="resetAccountForm()" class="px-4 py-2 bg-gray-200 hover:bg-gray-300 text-gray-700 text-xs font-bold rounded-lg transition">Batal</button>
+                            <button type="submit" class="px-4 py-2 bg-emerald-500 hover:bg-emerald-600 text-white text-xs font-bold rounded-lg transition">Simpan Rekening</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Account List -->
+                <div class="border border-gray-200 rounded-2xl overflow-hidden bg-white">
+                    <div class="p-3 bg-gray-100 font-bold text-xs text-gray-800 border-b border-gray-200">
+                        Daftar Nomor Rekening Owner Aktif
+                    </div>
+                    <div id="adminAccountsList" class="divide-y divide-gray-200">
+                        <!-- Dynamic list of accounts -->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-white border-t border-gray-200 mt-12 py-8 text-xs text-gray-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div>
+                <div class="flex items-center justify-center sm:justify-start gap-2 font-bold text-gray-900 text-sm mb-1">
+                    <i class="fa-brands fa-apple"></i> iStore Official
+                </div>
+                <p>© 2026 iStore Official. Toko iPhone Terpercaya. Semua Produk Original 100%.</p>
+            </div>
+            <div class="flex items-center gap-4 text-gray-600">
+                <a href="https://wa.me/6285766414558" target="_blank" class="hover:text-emerald-600 flex items-center gap-1">
+                    <i class="fa-brands fa-whatsapp"></i> 085766414558
+                </a>
+                <span>•</span>
+                <span>Garansi Resmi Indonesia</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Secret PIN Access Definition
+        const SECRET_PIN = "Ksb131483";
+        const ownerWhatsAppNumber = "6285766414558";
+
+        // Initial default products catalog
+        const defaultProducts = [
+            { id: 1, name: "iPhone 16 Pro Max 256GB", category: "iPhone 16", origPrice: 24999000, discount: 8, img: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-finish-select-202309-6-7inch-naturaltitanium?wid=512&hei=512&fmt=p-jpg" },
+            { id: 2, name: "iPhone 16 Pro 128GB", category: "iPhone 16", origPrice: 20999000, discount: 7, img: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-finish-select-202309-6-1inch-blacktitanium?wid=512&hei=512&fmt=p-jpg" },
+            { id: 3, name: "iPhone 16 Plus 128GB", category: "iPhone 16", origPrice: 18499000, discount: 10, img: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-finish-select-202309-6-7inch-blue?wid=512&hei=512&fmt=p-jpg" },
+            { id: 4, name: "iPhone 16 128GB", category: "iPhone 16", origPrice: 16499000, discount: 10, img: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-finish-select-202309-6-1inch-pink?wid=512&hei=512&fmt=p-jpg" },
+            { id: 5, name: "iPhone 15 Pro Max 256GB", category: "iPhone 15", origPrice: 22499000, discount: 12, img: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-finish-select-202309-6-7inch-whitetitanium?wid=512&hei=512&fmt=p-jpg" },
+            { id: 6, name: "iPhone 15 Pro 128GB", category: "iPhone 15", origPrice: 18999000, discount: 12, img: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-finish-select-202309-6-1inch-bluetitanium?wid=512&hei=512&fmt=p-jpg" },
+            { id: 7, name: "iPhone 15 128GB", category: "iPhone 15", origPrice: 13999000, discount: 15, img: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-finish-select-202309-6-1inch-yellow?wid=512&hei=512&fmt=p-jpg" },
+            { id: 8, name: "iPhone 14 Pro Max 128GB", category: "iPhone 14 & 13", origPrice: 17999000, discount: 18, img: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-14-finish-select-202209-6-7inch-purple?wid=512&hei=512&fmt=p-jpg" },
+            { id: 9, name: "iPhone 14 128GB", category: "iPhone 14 & 13", origPrice: 11999000, discount: 20, img: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-14-finish-select-202209-6-1inch-blue?wid=512&hei=512&fmt=p-jpg" },
+            { id: 10, name: "iPhone 13 128GB", category: "iPhone 14 & 13", origPrice: 9999000, discount: 20, img: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-finish-select-202207-starlight?wid=512&hei=512&fmt=p-jpg" }
+        ];
+
+        // State Variables with LocalStorage Persistence
+        let products = JSON.parse(localStorage.getItem('istore_products')) || defaultProducts;
+        let bankAccounts = JSON.parse(localStorage.getItem('istore_accounts')) || []; // EMPTY BY DEFAULT
+
+        let currentFilter = "All";
+        let activeProduct = null;
+        let brandClickCounter = 0;
+        let brandClickTimer = null;
+
+        // Save State
+        function persistData() {
+            localStorage.setItem('istore_products', JSON.stringify(products));
+            localStorage.setItem('istore_accounts', JSON.stringify(bankAccounts));
+        }
+
+        // Helper IDR Currency Format
+        function formatRupiah(number) {
+            return new Intl.NumberFormat('id-ID', {
+                style: 'currency',
+                currency: 'IDR',
+                maximumFractionDigits: 0
+            }).format(number);
+        }
+
+        // Secret Click Handler: 5 clicks on Brand Logo
+        function handleBrandClick() {
+            brandClickCounter++;
+            clearTimeout(brandClickTimer);
+
+            if (brandClickCounter >= 5) {
+                brandClickCounter = 0;
+                openPinModal();
+            } else {
+                brandClickTimer = setTimeout(() => {
+                    brandClickCounter = 0;
+                }, 2000);
+            }
+        }
+
+        function handleAdminTriggerPrompt() {
+            openPinModal();
+        }
+
+        function openPinModal() {
+            document.getElementById("pinModal").classList.remove("hidden");
+            document.getElementById("adminPinInput").value = "";
+            document.getElementById("adminPinInput").focus();
+        }
+
+        function closePinModal() {
+            document.getElementById("pinModal").classList.add("hidden");
+        }
+
+        function verifyPin(e) {
+            e.preventDefault();
+            const pin = document.getElementById("adminPinInput").value.trim();
+            if (pin === SECRET_PIN) {
+                closePinModal();
+                openAdminPanel();
+            } else {
+                alert("PIN Admin Salah!");
+                document.getElementById("adminPinInput").value = "";
+            }
+        }
+
+        function openAdminPanel() {
+            document.getElementById("adminPanelModal").classList.remove("hidden");
+            renderAdminProducts();
+            renderAdminAccounts();
+        }
+
+        function closeAdminPanel() {
+            document.getElementById("adminPanelModal").classList.add("hidden");
+            applyFilters();
+        }
+
+        function switchAdminTab(tab) {
+            if (tab === 'products') {
+                document.getElementById('adminTabProducts').classList.remove('hidden');
+                document.getElementById('adminTabAccounts').classList.add('hidden');
+                document.getElementById('tabBtnProducts').className = "pb-2 border-b-2 border-apple-blue text-apple-blue";
+                document.getElementById('tabBtnAccounts').className = "pb-2 text-gray-400 hover:text-gray-700";
+            } else {
+                document.getElementById('adminTabProducts').classList.add('hidden');
+                document.getElementById('adminTabAccounts').classList.remove('hidden');
+                document.getElementById('tabBtnProducts').className = "pb-2 text-gray-400 hover:text-gray-700";
+                document.getElementById('tabBtnAccounts').className = "pb-2 border-b-2 border-apple-blue text-apple-blue";
+            }
+        }
+
+        // Render products into the catalog grid
+        function renderProducts(items) {
+            const grid = document.getElementById("productGrid");
+            const emptyState = document.getElementById("emptyState");
+
+            if (items.length === 0) {
+                grid.innerHTML = "";
+                emptyState.classList.remove("hidden");
+                return;
+            }
+
+            emptyState.classList.add("hidden");
+            grid.innerHTML = items.map(item => {
+                const finalPrice = Math.round(item.origPrice * (1 - item.discount / 100));
+                return `
+                    <div class="product-card bg-white rounded-3xl p-4 sm:p-5 flex flex-col justify-between border border-gray-200/80 relative shadow-sm">
+                        
+                        <div class="absolute top-3 right-3 bg-red-500 text-white text-[11px] font-extrabold px-2.5 py-1 rounded-full shadow-sm z-10 flex items-center gap-1">
+                            <i class="fa-solid fa-tag text-[9px]"></i> Diskon ${item.discount}%
+                        </div>
+
+                        <div class="w-full h-44 sm:h-52 flex items-center justify-center p-2 mb-3 bg-gray-50/50 rounded-2xl">
+                            <img src="${item.img}" alt="${item.name}" loading="lazy" class="max-h-full object-contain filter drop-shadow-md">
+                        </div>
+
+                        <div>
+                            <span class="text-[10px] font-bold text-gray-400 uppercase tracking-wider">${item.category}</span>
+                            <h3 class="font-bold text-gray-900 text-sm sm:text-base leading-tight mt-0.5 line-clamp-1">${item.name}</h3>
+                            
+                            <div class="mt-2">
+                                <div class="text-xs text-gray-400 line-through font-medium">${formatRupiah(item.origPrice)}</div>
+                                <div class="text-base sm:text-lg font-extrabold text-gray-900 leading-tight">${formatRupiah(finalPrice)}</div>
+                            </div>
+                        </div>
+
+                        <button onclick="openModal(${item.id})" class="mt-4 w-full py-2.5 px-4 bg-apple-dark hover:bg-black text-white text-xs sm:text-sm font-semibold rounded-2xl transition flex items-center justify-center gap-2 shadow-sm">
+                            <i class="fa-solid fa-bag-shopping"></i>
+                            <span>Beli / Pesan</span>
+                        </button>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Category Filter
+        function filterCategory(category) {
+            currentFilter = category;
+            const buttons = document.querySelectorAll(".category-btn");
+            buttons.forEach(btn => {
+                btn.classList.remove("bg-apple-dark", "text-white", "shadow-sm");
+                btn.classList.add("bg-white", "text-gray-700", "hover:bg-gray-200", "border", "border-gray-200");
+            });
+
+            event.target.classList.remove("bg-white", "text-gray-700", "hover:bg-gray-200", "border", "border-gray-200");
+            event.target.classList.add("bg-apple-dark", "text-white", "shadow-sm");
+
+            applyFilters();
+        }
+
+        function handleSearch() { applyFilters(); }
+        function handleSearchMobile() { applyFilters(); }
+
+        function applyFilters() {
+            const queryDesktop = document.getElementById("searchInput").value.toLowerCase();
+            const queryMobile = document.getElementById("searchInputMobile").value.toLowerCase();
+            const query = queryDesktop || queryMobile;
+
+            let filtered = products;
+            if (currentFilter !== "All") {
+                filtered = filtered.filter(p => p.category === currentFilter);
+            }
+            if (query.trim() !== "") {
+                filtered = filtered.filter(p => p.name.toLowerCase().includes(query));
+            }
+
+            renderProducts(filtered);
+        }
+
+        // Open Checkout Modal
+        function openModal(productId) {
+            activeProduct = products.find(p => p.id === productId);
+            if (!activeProduct) return;
+
+            const finalPrice = Math.round(activeProduct.origPrice * (1 - activeProduct.discount / 100));
+
+            document.getElementById("modalImg").src = activeProduct.img;
+            document.getElementById("modalTitle").innerText = activeProduct.name;
+            document.getElementById("modalCategory").innerText = activeProduct.category;
+            document.getElementById("modalDiscountBadge").innerText = `Hemat ${activeProduct.discount}%`;
+            document.getElementById("modalOrigPrice").innerText = formatRupiah(activeProduct.origPrice);
+            document.getElementById("modalFinalPrice").innerText = formatRupiah(finalPrice);
+
+            // Render Bank Accounts list inside modal
+            const bankListContainer = document.getElementById("modalBankList");
+            if (bankAccounts.length === 0) {
+                bankListContainer.innerHTML = `
+                    <div class="text-center py-3 bg-white rounded-xl border border-blue-100 text-xs text-gray-500">
+                        <i class="fa-solid fa-circle-info text-blue-500 mr-1"></i>
+                        Rekening transfer belum ditambahkan oleh Admin. Silakan konfirmasi via WA.
+                    </div>
+                `;
+            } else {
+                bankListContainer.innerHTML = bankAccounts.map((acc, index) => `
+                    <div class="bg-white p-3 rounded-xl border border-blue-100 shadow-sm flex items-center justify-between">
+                        <div>
+                            <div class="text-xs font-extrabold text-blue-900">${acc.bank}</div>
+                            <div class="text-sm font-mono font-bold text-gray-800" id="rekAcc${index}">${acc.number}</div>
+                            <div class="text-[11px] text-gray-500">a.n ${acc.holder}</div>
+                        </div>
+                        <button type="button" onclick="copyAccountText('rekAcc${index}')" class="px-3 py-1.5 bg-gray-100 hover:bg-apple-blue hover:text-white text-gray-700 text-xs font-medium rounded-lg transition flex items-center gap-1">
+                            <i class="fa-regular fa-copy"></i> Salin
+                        </button>
+                    </div>
+                `).join('');
+            }
+
+            const modal = document.getElementById("orderModal");
+            const container = document.getElementById("modalContainer");
+
+            modal.classList.remove("hidden");
+            setTimeout(() => {
+                modal.classList.remove("opacity-0");
+                container.classList.remove("scale-95");
+                container.classList.add("scale-100");
+            }, 10);
+        }
+
+        function closeModal() {
+            const modal = document.getElementById("orderModal");
+            const container = document.getElementById("modalContainer");
+
+            container.classList.remove("scale-100");
+            container.classList.add("scale-95");
+            modal.classList.add("opacity-0");
+
+            setTimeout(() => {
+                modal.classList.add("hidden");
+            }, 300);
+        }
+
+        function copyAccountText(elementId) {
+            const text = document.getElementById(elementId).innerText;
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(text);
+            } else {
+                const textArea = document.createElement("textarea");
+                textArea.value = text;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+            }
+
+            const toast = document.createElement("div");
+            toast.className = "fixed bottom-6 right-6 bg-gray-900 text-white text-xs font-semibold px-4 py-2.5 rounded-xl shadow-2xl z-50 flex items-center gap-2";
+            toast.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-400"></i> Disalin: ${text}`;
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 2500);
+        }
+
+        // WhatsApp Order Submission
+        function submitOrder(e) {
+            e.preventDefault();
+            if (!activeProduct) return;
+
+            const name = document.getElementById("buyerName").value.trim();
+            const color = document.getElementById("buyerColor").value;
+            const address = document.getElementById("buyerAddress").value.trim();
+            const finalPrice = Math.round(activeProduct.origPrice * (1 - activeProduct.discount / 100));
+
+            let bankInfoText = "Belum Ada Rekening Ditambahkan (Konfirmasi via WA)";
+            if (bankAccounts.length > 0) {
+                bankInfoText = bankAccounts.map(a => `- ${a.bank}: ${a.number} (a.n ${a.holder})`).join('%0A');
+            }
+
+            const waMessage = 
+`Halo Admin iStore Official! 👋
+Saya mau memesan unit iPhone berikut:
+
+📱 *DETAIL PESANAN*
+- *Tipe iPhone:* ${activeProduct.name}
+- *Warna Unit:* ${color}
+- *Harga Normal:* ${formatRupiah(activeProduct.origPrice)}
+- *Diskon Toko:* ${activeProduct.discount}%
+- *TOTAL BAYAR:* *${formatRupiah(finalPrice)}*
+
+👤 *DATA PEMBELI*
+- *Nama:* ${name}
+- *Alamat Pengiriman:* ${address}
+
+🏦 *PEMBAYARAN TRANSFER*
+Tujuan Rekening:
+${bankInfoText}
+
+Mohon konfirmasi pesanan dan proses pengirimannya ya kak. Terima kasih!`;
+
+            window.open(`https://wa.me/${ownerWhatsAppNumber}?text=${encodeURIComponent(waMessage)}`, '_blank');
+            closeModal();
+        }
+
+        // --- ADMIN CRUD FUNCTIONS ---
+
+        // Render Admin Product List
+        function renderAdminProducts() {
+            const table = document.getElementById("adminProductTable");
+            table.innerHTML = products.map(p => {
+                const final = Math.round(p.origPrice * (1 - p.discount / 100));
+                return `
+                    <tr class="hover:bg-gray-50">
+                        <td class="p-3 font-bold text-gray-900 flex items-center gap-2">
+                            <img src="${p.img}" class="w-8 h-8 object-contain">
+                            <span>${p.name}</span>
+                        </td>
+                        <td class="p-3">${p.category}</td>
+                        <td class="p-3">${formatRupiah(p.origPrice)}</td>
+                        <td class="p-3 font-bold text-red-500">${p.discount}%</td>
+                        <td class="p-3 font-bold text-gray-900">${formatRupiah(final)}</td>
+                        <td class="p-3 text-center space-x-1">
+                            <button onclick="editProduct(${p.id})" class="px-2 py-1 bg-blue-100 text-blue-700 hover:bg-blue-200 rounded text-[11px] font-semibold">Edit</button>
+                            <button onclick="deleteProduct(${p.id})" class="px-2 py-1 bg-red-100 text-red-700 hover:bg-red-200 rounded text-[11px] font-semibold">Hapus</button>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        function saveProduct(e) {
+            e.preventDefault();
+            const editId = document.getElementById("editProductId").value;
+            const name = document.getElementById("pName").value.trim();
+            const category = document.getElementById("pCategory").value;
+            const origPrice = parseFloat(document.getElementById("pPrice").value);
+            const discount = parseFloat(document.getElementById("pDiscount").value);
+            const img = document.getElementById("pImg").value.trim();
+
+            if (editId) {
+                // Update
+                const idx = products.findIndex(p => p.id == editId);
+                if (idx !== -1) {
+                    products[idx] = { id: Number(editId), name, category, origPrice, discount, img };
+                }
+            } else {
+                // Add New
+                const newId = Date.now();
+                products.push({ id: newId, name, category, origPrice, discount, img });
+            }
+
+            persistData();
+            resetProductForm();
+            renderAdminProducts();
+        }
+
+        function editProduct(id) {
+            const p = products.find(item => item.id === id);
+            if (!p) return;
+
+            document.getElementById("editProductId").value = p.id;
+            document.getElementById("pName").value = p.name;
+            document.getElementById("pCategory").value = p.category;
+            document.getElementById("pPrice").value = p.origPrice;
+            document.getElementById("pDiscount").value = p.discount;
+            document.getElementById("pImg").value = p.img;
+            document.getElementById("productFormTitle").innerHTML = `<i class="fa-solid fa-pen-to-square text-apple-blue mr-1"></i> Edit Produk iPhone`;
+        }
+
+        function deleteProduct(id) {
+            if (confirm("Apakah Anda yakin ingin menghapus produk ini dari katalog?")) {
+                products = products.filter(p => p.id !== id);
+                persistData();
+                renderAdminProducts();
+            }
+        }
+
+        function resetProductForm() {
+            document.getElementById("editProductId").value = "";
+            document.getElementById("pName").value = "";
+            document.getElementById("pPrice").value = "";
+            document.getElementById("pDiscount").value = "";
+            document.getElementById("pImg").value = "";
+            document.getElementById("productFormTitle").innerHTML = `<i class="fa-solid fa-plus-circle text-apple-blue mr-1"></i> Tambah Produk iPhone Baru`;
+        }
+
+        // Render Admin Accounts List
+        function renderAdminAccounts() {
+            const list = document.getElementById("adminAccountsList");
+            if (bankAccounts.length === 0) {
+                list.innerHTML = `<div class="p-4 text-center text-xs text-gray-400">Belum ada nomor rekening yang disimpan. Tambahkan di atas.</div>`;
+                return;
+            }
+
+            list.innerHTML = bankAccounts.map((acc, idx) => `
+                <div class="p-3 flex items-center justify-between hover:bg-gray-50">
+                    <div>
+                        <span class="text-xs font-extrabold text-blue-900">${acc.bank}</span>
+                        <div class="text-sm font-mono font-bold text-gray-800">${acc.number}</div>
+                        <div class="text-xs text-gray-500">a.n ${acc.holder}</div>
+                    </div>
+                    <div class="space-x-1">
+                        <button onclick="editAccount(${idx})" class="px-2 py-1 bg-blue-100 text-blue-700 hover:bg-blue-200 rounded text-[11px] font-semibold">Edit</button>
+                        <button onclick="deleteAccount(${idx})" class="px-2 py-1 bg-red-100 text-red-700 hover:bg-red-200 rounded text-[11px] font-semibold">Hapus</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function saveAccount(e) {
+            e.preventDefault();
+            const editIdx = document.getElementById("editAccId").value;
+            const bank = document.getElementById("accBank").value.trim().toUpperCase();
+            const number = document.getElementById("accNum").value.trim();
+            const holder = document.getElementById("accHolder").value.trim();
+
+            if (editIdx !== "") {
+                bankAccounts[Number(editIdx)] = { bank, number, holder };
+            } else {
+                bankAccounts.push({ bank, number, holder });
+            }
+
+            persistData();
+            resetAccountForm();
+            renderAdminAccounts();
+        }
+
+        function editAccount(index) {
+            const acc = bankAccounts[index];
+            if (!acc) return;
+
+            document.getElementById("editAccId").value = index;
+            document.getElementById("accBank").value = acc.bank;
+            document.getElementById("accNum").value = acc.number;
+            document.getElementById("accHolder").value = acc.holder;
+            document.getElementById("accFormTitle").innerHTML = `<i class="fa-solid fa-pen-to-square text-apple-blue mr-1"></i> Edit Nomor Rekening`;
+        }
+
+        function deleteAccount(index) {
+            if (confirm("Apakah Anda yakin ingin menghapus rekening ini?")) {
+                bankAccounts.splice(index, 1);
+                persistData();
+                renderAdminAccounts();
+            }
+        }
+
+        function resetAccountForm() {
+            document.getElementById("editAccId").value = "";
+            document.getElementById("accBank").value = "";
+            document.getElementById("accNum").value = "";
+            document.getElementById("accHolder").value = "";
+            document.getElementById("accFormTitle").innerHTML = `<i class="fa-solid fa-plus-circle text-apple-blue mr-1"></i> Tambah Nomor Rekening Owner Baru`;
+        }
+
+        // Initial Load
+        renderProducts(products);
+    </script>
+</body>
+</html>
